@@ -5,12 +5,12 @@
 #include "SingleTask.h"
 #include "ShareTask.h"
 
-// #include "User.cpp"
-// #include "Admin.cpp"
-// #include "Staff.cpp"
-// #include "Task.cpp"
-// #include "SingleTask.cpp"
-// #include "ShareTask.cpp"
+#include "User.cpp"
+#include "Admin.cpp"
+#include "Staff.cpp"
+#include "Task.cpp"
+#include "SingleTask.cpp"
+#include "ShareTask.cpp"
 
 #include <vector>
 #include <string>
@@ -24,8 +24,6 @@ int main() {
 
     admin.addStaff(&staff1);
     admin.addStaff(&staff2);
-    // cout << "ID: " << staff1.getID() << "\nName: " <<  staff1.getname() << endl;
-    // cout << "ID: " << staff2.getID() << "\nName: " <<  staff2.getname()  << endl;
 
     SingleTask task1("ST001", "Prepare report");
     ShareTask task2("ST002", "Update website");
@@ -33,17 +31,11 @@ int main() {
     admin.addTask(&task1);
     admin.addTask(&task2);
 
-    // admin.assignTask(&staff1, &task1);
-    // admin.assignTask(&staff1, &task2);
-    // admin.assignTask(&staff2, &task2);
-    // std::vector<Staff*> staffMembers = admin.getStaffMembers();
-    // for (Staff* staff : admin.getStaffMembers()) {
-    //     cout <<"ID: " << staff->getID() << "\nName: " << staff->getname() << endl;
-    // }
     Staff* foundStaff = nullptr;
     int choice;
     do {
-        std::cout << "Main Menu:\n1. Admin Menu\n2. Staff Menu\n0. Exit\nEnter choice: ";
+        std::cout << "============*MAIN MENU*============" << std::endl;
+        std::cout << "1. Admin Menu\n2. Staff Menu\n0. Exit\nEnter choice: ";
         std::cin >> choice;
 
         switch (choice) {

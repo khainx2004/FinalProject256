@@ -16,7 +16,8 @@ const std::vector<Staff*>& Admin::getStaffMembers() const {
 void Admin::displayMenu() {
         int choice;
         while(choice != 0) {
-            std::cout << "Admin Menu:\n1. Manage Staff\n2. Manage Tasks\n0. Exit\nEnter choice: ";
+            std::cout << "============*ADMIN MENU*============" << std::endl;
+            std::cout << "1. Manage Staff\n2. Manage Tasks\n0. Exit\nEnter choice: ";
             std::cin >> choice;
             switch (choice) {
                 case 1:
@@ -39,21 +40,26 @@ void Admin::manageStaff() {
 
     bool in_manastaffmenu = true;
     while(in_manastaffmenu) {
-        std::cout << "Staff Management:\n1. Add Staff\n2. Remove Staff\n3. Update Staff\n0. Back\nEnter choice: ";
+        std::cout << "===========*STAFF MANAGEMENT*===========" << std::endl;
+        std::cout << "1. Add Staff\n2. Remove Staff\n3. Update Staff\n4. Display Staff Members\n0. Back\nEnter choice: ";
         std::cin >> choice;
         if(choice == 1){
-        std::string new_staffname;
-        std::cout << "Add Staff: \nPlease Enter Name: ";
-        std::cin >> new_staffname;
-        Staff* newstaff = new Staff(new_staffname);
-        addStaff(newstaff);
-        std::cout << "Added Staff successfully.\n";
+            std::string new_staffname;
+            std::cout << "\nAdd Staff: \nPlease Enter Name: ";
+            std::cin.ignore();
+            getline(std::cin,new_staffname);
+            Staff* newstaff = new Staff(new_staffname);
+            addStaff(newstaff);
+            std::cout << "Added Staff successfully.\n";
         }
         else if (choice == 2) {
             removeStaff();
         }
         else if (choice == 3) {
             updateStaff();
+        }
+        else if (choice == 4) {
+            viewStaff();
         }
         else if (choice == 0) {
             std::cout << "Going back...\n";
@@ -69,7 +75,7 @@ void Admin::addStaff(Staff* newstaff) {
     staff.push_back(newstaff);
 }
 void Admin::removeStaff() {
-    std::cout << "Enter Staff's ID you want to remove: ";
+    std::cout << "\nEnter Staff's ID you want to remove: ";
     int removeid;
     std::cin >> removeid;
     bool staffRemoved = false;
@@ -89,7 +95,7 @@ void Admin::removeStaff() {
 
 void Admin::updateStaff() {
     int idupdate;
-    std::cout << "Enter Staff's ID you want to update: ";
+    std::cout << "\nEnter Staff's ID you want to update: ";
     std::cin >> idupdate;
     bool staffFound = false;
     for (Staff* s: staff) {
@@ -110,17 +116,29 @@ void Admin::updateStaff() {
 
 }
 
+void Admin::viewStaff() {
+    if (staff.empty()) {
+        std::cout << "\nNo staff member to display." << std::endl;
+    }
+    else {
+        std::cout << "\n";
+        for (const auto& s: staff) {
+            std::cout << "Staff: " << s->getname() << " [ID: " << s->getID() << "]" << std::endl;  
+        }
+    }
+}
 void Admin::manageTasks() {
     int choice;
     bool inmanaTask = true;
     while(inmanaTask){
-        std::cout << "Task Management:\n1. Add Task\n2. Assign Task\n3. View Task\n0. Back\nEnter choice: ";
+        std::cout << "===========*TASK MANAGEMENT*===========" << std::endl;
+        std::cout << "1. Add Task\n2. Assign Task\n3. View Task\n0. Back\nEnter choice: ";
         std::cin >> choice;
         if(choice == 1){
             std::string new_taskname;
             std::string task_des;
             int typechoice;
-            std::cout << "Add Task: \nPlease Enter Task's Name: ";
+            std::cout << "\nAdd Task: \nPlease Enter Task's Name: ";
             std::cin >> new_taskname;
             std::cin.ignore();
             std::cout << "Description of Task: ";
@@ -144,7 +162,7 @@ void Admin::manageTasks() {
             int staffid;
             int taskid;
 
-            std::cout << "Assign Task to Staff Member: \n";
+            std::cout << "\nAssign Task to Staff Member: \n";
             std::cout << "Enter Staff's ID you want to assign to: ";
             std::cin >> staffid;
         

@@ -11,7 +11,7 @@ Task::Task(const std::string& name)
     }
 void Task::markComplete(){
     this->complete = true;
-    std::cout << "Task: " << id << " marked as completed. \n";
+    std::cout << "\n!!!Task: " << id << " marked as completed.!!! \n";
 }
 bool Task::isComplete(){
     return complete;

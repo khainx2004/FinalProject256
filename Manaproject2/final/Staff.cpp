@@ -5,7 +5,7 @@ Staff::Staff()
     ID = idCounter++;
     }
 
-Staff::Staff(std::string name_val)
+Staff::Staff(const std::string& name_val)
     : User(name_val) {
     ID = idCounter++;
     }
@@ -21,7 +21,7 @@ int Staff::getID() {
 void Staff::displayMenu() {
     int choice;
     while (choice != 0) {
-        std::cout << "Staff Menu (" << this->getname() << "): \n1. View Assigned Tasks\n2. Mark Task as Complete\n0. Exit\nEnter Choice: ";
+        std::cout << "\nStaff Menu (" << this->getname() << "): \n1. View Assigned Tasks\n2. Mark Task as Complete\n0. Exit\nEnter Choice: ";
         std::cin >> choice;
         if (choice == 1) {
             viewAssignedTasks();
@@ -53,7 +53,7 @@ void Staff::markTaskComplete() {
         std::cout << "No tasks assigned. \n";
     }
     else {
-        std::cout << "Enter task's ID to mark as complete: ";
+        std::cout << "\nEnter task's ID to mark as complete: ";
         int taskID;
         std::cin >> taskID;
         bool taskfound = false;

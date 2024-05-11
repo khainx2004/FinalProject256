@@ -12,11 +12,14 @@ public:
     const std::vector<Staff*>& getStaffMembers() const;
     virtual void displayMenu() override;
     void manageStaff();
-    void manageTasks();
+    
     void addStaff(Staff* newstaff);
-    void addTask(Task* newtask);
     void removeStaff();
     void updateStaff();
+    void viewStaff();
+    
+    void manageTasks();
+    void addTask(Task* newtask);
     void viewTasks();
     bool assignTask(Staff* staff, Task* task);
 

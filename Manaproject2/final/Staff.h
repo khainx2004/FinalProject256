@@ -11,7 +11,7 @@ protected:
 public:
     
     Staff();
-    Staff(std::string name);
+    Staff(const std::string& name);
     // void setname(const std::string& name);
     // std::string getname() const;
     int getID();
